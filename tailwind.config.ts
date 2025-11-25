@@ -8,61 +8,71 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        // Light Theme
-        light: {
-          background: "#FFFFFF",
-          foreground: "#111827",
-          card: "#FFFFFF",
-          "card-foreground": "#111827",
-          popover: "#FFFFFF",
-          "popover-foreground": "#111827",
-          primary: "#6366F1",
-          "primary-foreground": "#FFFFFF",
-          secondary: "#F3F4F6",
-          "secondary-foreground": "#1F2937",
-          muted: "#F3F4F6",
-          "muted-foreground": "#6B7280",
-          accent: "#F3F4F6",
-          "accent-foreground": "#1F2937",
-          destructive: "#EF4444",
-          "destructive-foreground": "#FFFFFF",
-          border: "#E5E7EB",
-          input: "#E5E7EB",
-          ring: "#6366F1",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        // Dark Theme
-        dark: {
-          background: "#111827",
-          foreground: "#F9FAFB",
-          card: "#1F2937",
-          "card-foreground": "#F9FAFB",
-          popover: "#1F2937",
-          "popover-foreground": "#F9FAFB",
-          primary: "#818CF8",
-          "primary-foreground": "#111827",
-          secondary: "#374151",
-          "secondary-foreground": "#F9FAFB",
-          muted: "#374151",
-          "muted-foreground": "#9CA3AF",
-          accent: "#374151",
-          "accent-foreground": "#F9FAFB",
-          destructive: "#F87171",
-          "destructive-foreground": "#111827",
-          border: "#374151",
-          input: "#374151",
-          ring: "#818CF8",
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
       },
       borderRadius: {
-        lg: `0.5rem`,
-        md: `calc(0.5rem - 2px)`,
-        sm: `calc(0.5rem - 4px)`,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;
